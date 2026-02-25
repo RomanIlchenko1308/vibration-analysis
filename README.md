@@ -1,4 +1,4 @@
-# ⚡ Vibration Analysis — Machine Health Monitoring System
+# ⚡ Vibration Analysis — Machine Monitoring System
 
 A complete vibration signal processing pipeline that reads acceleration data from Excel,
 performs time-domain and frequency-domain analysis, detects machine faults,
