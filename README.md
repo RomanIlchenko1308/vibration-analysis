@@ -10,11 +10,10 @@ and presents results in an interactive Streamlit dashboard.
 
 > Upload your Excel file → instant analysis, interactive charts, downloadable report
 
-![Dashboard Preview](https://youtu.be/UBn5qiGRgbg)
+[Dashboard Demo](demo_video/dashboard_demo.gif)
 
-https://youtu.be/UBn5qiGRgbg
+[**Full Dashboard Demo Video Youtube**](https://youtu.be/UBn5qiGRgbg)
 
-https://github.com/RomanIlchenko1308/vibration-analysis/demo_video/Vibration_Analysis_Demo.mp4
 
 ---
 
