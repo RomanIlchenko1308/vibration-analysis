@@ -12,7 +12,7 @@ and presents results in an interactive Streamlit dashboard.
 
 ![Dashboard Demo](demo_video/dashboard_demo.gif)
 
-![**Full Dashboard Demo Video Youtube**](https://youtu.be/UBn5qiGRgbg)
+[**Full Dashboard Demo Video Youtube**](https://youtu.be/UBn5qiGRgbg)
 
 
 ---
