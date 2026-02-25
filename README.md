@@ -27,6 +27,7 @@ vibration-analysis/
 ├── requirements.txt          # All Python dependencies
 │
 └── outputs/
+    ├── exmple_vibration_analysis_report.html # Sample generated HTML report
     └── example_dashboard.png # Pre-generated dashboard screenshot
 ```
 
