@@ -40,18 +40,35 @@ git clone https://github.com/<your-username>/vibration-analysis.git
 cd vibration-analysis
 ```
 
-### 2. Install dependencies
+### 2. Create a virtual environment (optional but recommended)
+```bash
+python -m venv venv_vibration_analysis
+```
+
+Activate the virtual environment:
+
+On Windows:
+```bash
+venv_vibration_analysis\Scripts\activate
+```
+
+On macOS/Linux:
+```bash
+source venv_vibration_analysis/bin/activate
+```
+
+### 3. Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Run the Streamlit dashboard
+### 4. Run the Streamlit dashboard
 ```bash
 streamlit run Dashboard_App.py
 ```
 Then open **http://localhost:8501** in your browser and upload `vibration_data.xlsx`.
 
-### 4. Or run the CLI script directly
+### 5. Or run the CLI script directly
 ```bash
 python main.py
 ```
