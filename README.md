@@ -1,7 +1,5 @@
 # ⚡ Vibration Analysis — Machine Health Monitoring System
 
-**Technical Assessment | Roman Ilchenko | Structural Engineer Position**
-
 A complete vibration signal processing pipeline that reads acceleration data from Excel,
 performs time-domain and frequency-domain analysis, detects machine faults,
 and presents results in an interactive Streamlit dashboard.
