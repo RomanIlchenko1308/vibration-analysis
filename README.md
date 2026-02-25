@@ -219,9 +219,12 @@ Sensor error codes (`999`, `SENSOR_ERROR` strings, `|a| ≥ 100g`) are automatic
 
 ## 📚 References
 
-- ISO 10816 — *Mechanical vibration — Evaluation of machine vibration by measurements on non-rotating parts*
-- BS ISO 13373 — *Condition monitoring and diagnostics of machines — Vibration condition monitoring*
+- Basic Vibration Analyst: Peak, Peak-to-Peak, RMS, and Crest Factors- Understanding key vibrations — https://www.youtube.com/watch?v=yxYxkDWEDWQ
+- Spectrum Analysis in Python - https://www.geeksforgeeks.org/artificial-intelligence/spectrum-analysis-in-python/
+- Find peaks in a signal - https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.find_peaks.html#scipy.signal.find_peaks
 - Scipy FFT documentation — https://docs.scipy.org/doc/scipy/reference/fft.html
 - Welch PSD method — https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.welch.html
-
+- Vibration Analysis of Bearings for Early Fault Detection: A MATLAB Case Study! - https://medium.com/@RashmiW/vibration-analysis-of-bearings-for-early-fault-detection-a-matlab-case-study-1e2ff244c78e
+- Vibration measurement and analysis - https://www.spminstrument.com/measuring-techniques/vibration-monitoring/vibration-measurement-and-analysis/
+- Peak to peak amplitude of sum of sinusoidals (harmonic frequencies) - https://dsp.stackexchange.com/questions/9724/peak-to-peak-amplitude-of-sum-of-sinusoidals-harmonic-frequencies
 ---
