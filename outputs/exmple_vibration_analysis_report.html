@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<title>Vibration Report — vibration_data.xlsx</title>
+<style>
+  body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 960px; margin: 0 auto; padding: 40px 32px; color: #1e293b; line-height: 1.6; }
+  h1 { font-size: 26px; font-weight: 800; border-bottom: 3px solid #0066ff; padding-bottom: 10px; }
+  h2 { font-size: 17px; font-weight: 700; margin: 32px 0 10px; padding-left: 12px; border-left: 4px solid #0066ff; }
+  h3 { font-size: 14px; font-weight: 700; margin: 20px 0 6px; }
+  .meta { color: #64748b; font-size: 13px; margin-bottom: 28px; font-family: monospace; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 20px; }
+  th { background: #f1f5f9; padding: 9px 13px; text-align: left; font-weight: 700; border-bottom: 2px solid #e2e8f0; }
+  td { padding: 9px 13px; border-bottom: 1px solid #e2e8f0; }
+  .verdict { padding: 18px 22px; border-radius: 10px; border-left: 5px solid #d97706; background: #fffbeb; margin: 16px 0; }
+  .verdict h3 { color: #d97706; font-size: 20px; margin: 0 0 6px; }
+  .formula { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 18px; font-family: monospace; font-size: 13px; margin: 10px 0; }
+  .kpis { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin: 16px 0; }
+  .kpi { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; }
+  .kpi .lbl { font-size: 10px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; }
+  .kpi .val { font-family: monospace; font-size: 18px; font-weight: 700; }
+  footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #e2e8f0; color: #94a3b8; font-size: 11px; text-align: center; }
+  @media print { body { padding: 20px; } }
+</style>
+</head><body>
+
+<h1>⚡ Vibration Analysis Report</h1>
+<div class="meta">
+  File: vibration_data.xlsx &nbsp;|&nbsp; Generated: 2026-02-25 22:34:37 &nbsp;|&nbsp;
+  Clean Samples: 9,920 &nbsp;|&nbsp; Duration: 10.00 s &nbsp;|&nbsp; fs: 1000 Hz
+</div>
+
+<h2>1. Machine Health Verdict</h2>
+<div class="verdict">
+  <h3>🟡  MONITOR CLOSELY</h3>
+  <p>See findings below.</p>
+</div>
+<table>
+  <tr><th>Severity</th><th>Finding</th></tr>
+  <tr style="background:#fffbeb"><td style="color:#d97706;font-weight:bold">WARN</td><td>Crest Factor = 3.70 → monitor closely</td></tr>
+</table>
+
+<h2>2. Key Performance Indicators</h2>
+<div class="kpis">
+  <div class="kpi"><div class="lbl">RMS</div><div class="val">0.03385 g</div></div>
+  <div class="kpi"><div class="lbl">Peak</div><div class="val">0.12532 g</div></div>
+  <div class="kpi"><div class="lbl">Crest Factor</div><div class="val">3.70</div></div>
+  <div class="kpi"><div class="lbl">Kurtosis</div><div class="val">3.30</div></div>
+  <div class="kpi"><div class="lbl">Peak-to-Peak</div><div class="val">0.24953 g</div></div>
+  <div class="kpi"><div class="lbl">Std Dev</div><div class="val">0.03385 g</div></div>
+  <div class="kpi"><div class="lbl">Mean</div><div class="val">0.00017 g</div></div>
+  <div class="kpi"><div class="lbl">Dominant Freq</div><div class="val">40.3 Hz</div></div>
+</div>
+
+<h2>3. Processing Steps & Formulas</h2>
+
+<h3>Step 1 — Data Cleaning</h3>
+<p>Sensor error codes (|a| ≥ 100.0 g) removed. Non-numeric strings converted via <code>pd.to_numeric(errors='coerce')</code>.</p>
+
+<h3>Step 2 — Sampling Rate</h3>
+<div class="formula">dt = median(diff(timestamp))  →  fs = 1 / dt = <strong>999.9 Hz</strong>
+Nyquist frequency = fs / 2 = 499.9 Hz  (max detectable frequency)</div>
+
+<h3>Step 3 — Time Domain Metrics</h3>
+<table>
+  <tr><th>Metric</th><th>Formula</th><th>Value</th><th>Interpretation</th></tr>
+  <tr><td><strong>RMS</strong></td><td><code>√(Σxᵢ² / N)</code></td><td>0.03385 g</td>
+      <td>🟢 Normal</td></tr>
+  <tr><td><strong>Peak</strong></td><td><code>max(|xᵢ|)</code></td><td>0.12532 g</td><td>Max single event</td></tr>
+  <tr><td><strong>Crest Factor</strong></td><td><code>Peak / RMS</code></td><td>3.70</td>
+      <td>🟡 >3: monitor</td></tr>
+  <tr><td><strong>Kurtosis</strong></td><td><code>E[(x-μ)⁴] / σ⁴</code></td><td>3.30</td>
+      <td>🟢 Normal (≈3.0)</td></tr>
+</table>
+
+<h3>Step 4 — FFT Frequency Analysis</h3>
+<div class="formula">X[k] = Σ x[n] · e^(−j·2π·k·n/N)   for k = 0, 1, …, N/2
+Frequency resolution = fs / N = 999.9 / 9,920 = 0.1008 Hz/bin</div>
+
+<h3>Step 5 — Welch PSD</h3>
+<p>Signal divided into overlapping Hann-windowed segments (nperseg=1024). FFT averaged across segments → smoother spectrum in g²/Hz units.</p>
+
+<h2>4. Dominant Frequencies</h2>
+<table>
+  <tr><th>#</th><th>Frequency</th><th>Amplitude</th><th>Relative</th><th>Note</th></tr>
+  <tr>
+            <td>1</td>
+            <td><strong>40.32</strong> Hz</td>
+            <td>0.022727 g</td>
+            <td>100.0%</td>
+            <td>Dominant</td>
+        </tr><tr>
+            <td>2</td>
+            <td><strong>201.09</strong> Hz</td>
+            <td>0.008839 g</td>
+            <td>38.9%</td>
+            <td>High-freq</td>
+        </tr><tr>
+            <td>3</td>
+            <td><strong>39.61</strong> Hz</td>
+            <td>0.004619 g</td>
+            <td>20.3%</td>
+            <td>Harmonic</td>
+        </tr><tr>
+            <td>4</td>
+            <td><strong>41.43</strong> Hz</td>
+            <td>0.003665 g</td>
+            <td>16.1%</td>
+            <td>Harmonic</td>
+        </tr><tr>
+            <td>5</td>
+            <td><strong>201.59</strong> Hz</td>
+            <td>0.003585 g</td>
+            <td>15.8%</td>
+            <td>High-freq</td>
+        </tr><tr>
+            <td>6</td>
+            <td><strong>202.90</strong> Hz</td>
+            <td>0.003504 g</td>
+            <td>15.4%</td>
+            <td>High-freq</td>
+        </tr><tr>
+            <td>7</td>
+            <td><strong>199.17</strong> Hz</td>
+            <td>0.003149 g</td>
+            <td>13.9%</td>
+            <td>Mid-freq</td>
+        </tr><tr>
+            <td>8</td>
+            <td><strong>199.68</strong> Hz</td>
+            <td>0.002952 g</td>
+            <td>13.0%</td>
+            <td>Mid-freq</td>
+        </tr>
+</table>
+
+<h2>5. Diagnostic Thresholds (ISO 10816)</h2>
+<table>
+  <tr><th>Metric</th><th>Normal</th><th>Warning</th><th>Critical</th></tr>
+  <tr><td>RMS</td><td>&lt; 0.1 g</td><td>0.1–0.2 g</td><td>&gt; 0.2 g</td></tr>
+  <tr><td>Crest Factor</td><td>&lt; 3.0</td><td>3.0–5.0</td><td>&gt; 5.0</td></tr>
+  <tr><td>Kurtosis</td><td>≈ 3.0</td><td>&gt; 4.0</td><td>&gt; 6.0</td></tr>
+</table>
+
+<footer>VibSense Pro — Generated 2026-02-25 22:34:37 | vibration_data.xlsx</footer>
+</body></html>
