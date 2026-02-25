@@ -21,7 +21,7 @@ and presents results in an interactive Streamlit dashboard.
 ```
 vibration-analysis/
 │
-├── streamlit_app.py          # Interactive web dashboard (main deliverable)
+├── Dashboard_App.py          # Interactive web dashboard (main deliverable)
 ├── main.py                   # Core analysis pipeline (CLI version, schedulable)
 ├── vibration_analysis.ipynb  # Step-by-step notebook with explanations
 │
@@ -49,7 +49,7 @@ pip install -r requirements.txt
 
 ### 3. Run the Streamlit dashboard
 ```bash
-streamlit run streamlit_app.py
+streamlit run Dashboard_App.py
 ```
 Then open **http://localhost:8501** in your browser and upload `vibration_data.xlsx`.
 
