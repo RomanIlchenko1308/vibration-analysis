@@ -10,7 +10,10 @@ and presents results in an interactive Streamlit dashboard.
 
 > Upload your Excel file → instant analysis, interactive charts, downloadable report
 
+![Dashboard Demo](demo_video/dashboard_demo.gif)
+
 [Dashboard Demo](demo_video/dashboard_demo.gif)
+
 
 [**Full Dashboard Demo Video Youtube**](https://youtu.be/UBn5qiGRgbg)
 
