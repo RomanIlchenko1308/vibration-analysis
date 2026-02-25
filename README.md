@@ -14,6 +14,8 @@ and presents results in an interactive Streamlit dashboard.
 
 https://youtu.be/UBn5qiGRgbg
 
+https://github.com/RomanIlchenko1308/vibration-analysis/demo_video/Vibration_Analysis_Demo.mp4
+
 ---
 
 ## 🗂️ Repository Structure
